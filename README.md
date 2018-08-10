@@ -4,10 +4,10 @@ This repository contains the my solutions to this course. The challenges should 
 
 The exercises so far and a brief summary of areas they touch upon:
 
-#GeoQuiz
+**GeoQuiz**
 
 Activity basics, Intents, Listeners, Views, and the Activity Lifecycle.
 
-#CriminalIntent
+**CriminalIntent**
 
 Introduction of Fragments, the FragmentManager, The Fragment Lifecycle.
