@@ -1,4 +1,4 @@
-# Solutions to Android Programming: The BigNerdRanch Guide (3rd Edition)
+# Solutions to Android Programming: The Big Nerd Ranch Guide (3rd Edition)
 
 This repository contains the my solutions to this course. The challenges should be completed on most.
 
