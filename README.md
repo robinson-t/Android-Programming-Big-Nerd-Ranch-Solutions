@@ -14,5 +14,6 @@ Introduction of Fragments, the FragmentManager, The Fragment Lifecycle, Recycler
 
 
 
-**Named Challenges**
+**Named Challenge Files**
+
 **CriminalIntent-Challenge** Added another ViewHolder type to the RecyclerView with different layout file. Set to one in five items.
