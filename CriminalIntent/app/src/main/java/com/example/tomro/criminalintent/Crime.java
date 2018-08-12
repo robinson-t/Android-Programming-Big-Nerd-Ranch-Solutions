@@ -1,5 +1,6 @@
 package com.example.tomro.criminalintent;
 
+import android.text.format.DateFormat;
 import java.util.UUID;
 import java.util.Date;
 
@@ -9,6 +10,7 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+
 
     public Crime() {
         this.mId = UUID.randomUUID();
@@ -29,6 +31,8 @@ public class Crime {
 
     public Date getDate() {
         return mDate;
+        //return DateFormat.format("EEEE, dd MMMM yyyy",  mDate);
+
     }
 
     public void setDate(Date date) {
@@ -42,6 +46,7 @@ public class Crime {
     public void setSolved(boolean solved) {
         mSolved = solved;
     }
+
 
 
 
