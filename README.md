@@ -10,7 +10,7 @@ Activity basics, Intents, Listeners, Views, and the Activity Lifecycle.
 
 **CriminalIntent**
 
-Introduction of Fragments, the FragmentManager, The Fragment Lifecycle, RecyclerView, ViewPager
+Introduction of Fragments, the FragmentManager, The Fragment Lifecycle, RecyclerView, ViewPager, Dialogs, Toolbar and menu items
 
 
 
