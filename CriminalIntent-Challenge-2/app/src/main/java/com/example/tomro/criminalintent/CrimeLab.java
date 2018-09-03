@@ -3,6 +3,7 @@ package com.example.tomro.criminalintent;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,5 +38,15 @@ public class CrimeLab {
 
     public void addCrime(Crime c) {
         this.mCrimes.add(c);
+    }
+
+    public void deleteCrime(Crime c) {
+        Iterator<Crime> iter = mCrimes.iterator();
+        while (iter.hasNext()) {
+            if (c.equals(iter.next())) {
+                this.mCrimes.remove(c);
+                break;
+            }
+        }
     }
 }
