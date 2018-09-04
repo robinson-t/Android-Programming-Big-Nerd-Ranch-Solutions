@@ -31,6 +31,9 @@ public class CrimeListFragment extends Fragment {
     private boolean mSubtitleVisible;
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
+    private static final int VIEW_TYPE_EMPTY_LIST_PLACEHOLDER = 0;
+    private static final int VIEW_TYPE_OBJECT_VIEW = 1;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +133,19 @@ public class CrimeListFragment extends Fragment {
         }
     }
 
+    private class EmptyCrimeHolder extends RecyclerView.ViewHolder {
+        public EmptyCrimeHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_empty, parent, false));
+        }
+
+        public void bind(Crime crime) {
+
+        }
+
+
+
+    }
+
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
@@ -152,22 +168,40 @@ public class CrimeListFragment extends Fragment {
         activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
-    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+    private abstract class CrimeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private List<Crime> mCrimes;
 
         public CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
         }
 
-        @NonNull
         @Override
-        public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new CrimeHolder(layoutInflater, parent);
+        public int getItemViewType(int position) {
+            if (CrimeLab.get(getActivity()).getCrimes().isEmpty()) {
+                return VIEW_TYPE_EMPTY_LIST_PLACEHOLDER;
+            } else {
+                return VIEW_TYPE_OBJECT_VIEW;
+            }
         }
 
+        @NonNull
         @Override
-        public void onBindViewHolder(@NonNull CrimeHolder holder, int position) {
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+
+            switch(viewType) {
+                case VIEW_TYPE_EMPTY_LIST_PLACEHOLDER:
+                    return new EmptyCrimeHolder(layoutInflater, parent);
+                default:
+                    return new CrimeHolder(layoutInflater, parent);
+            }
+
+        }
+
+
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
             Crime crime = mCrimes.get(position);
 
             holder.bind(crime);
@@ -185,4 +219,8 @@ public class CrimeListFragment extends Fragment {
 
 
     }
+
+
+
+
 }
