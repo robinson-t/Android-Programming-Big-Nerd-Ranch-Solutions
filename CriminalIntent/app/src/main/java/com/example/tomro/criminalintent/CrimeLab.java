@@ -1,6 +1,10 @@
 package com.example.tomro.criminalintent;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import com.example.tomro.criminalintent.database.CrimeDbSchema;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +12,13 @@ import java.util.UUID;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
-    private List<Crime> mCrimes;
+
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     private CrimeLab (Context context) {
-        this.mCrimes = new ArrayList<Crime>();
+        mContext = context.getApplicationContext();
+        mDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
 
     }
 
@@ -23,19 +30,22 @@ public class CrimeLab {
     }
 
     public List<Crime> getCrimes() {
-        return this.mCrimes;
+        return new ArrayList<>();
     }
 
     public Crime getCrime(UUID id) {
-        for (Crime c : this.mCrimes) {
-            if (c.getId().equals(id)) {
-                return c;
-            }
-        }
         return null;
     }
 
     public void addCrime(Crime c) {
-        this.mCrimes.add(c);
+        ;
+    }
+
+    private static ContentValues getContentValues(Crime crime) {
+        ContentValues values = new ContentValues();
+        values.put(CrimeDbSchema.CrimeTable.Cols.UUID, crime.getId().toString());
+        values.put(CrimeDbSchema.CrimeTable.Cols.TITLE, crime.getTitle());
+        values.put(CrimeDbSchema.CrimeTable.Cols.DATE, );
+
     }
 }
