@@ -141,7 +141,7 @@ public class CrimeListFragment extends Fragment {
             mAdapter.setCrimes(crimes);
             mAdapter.notifyDataSetChanged();
         }
-        
+
         updateSubtitle();
 
     }
