@@ -16,7 +16,8 @@ Introduction of Fragments, the FragmentManager, The Fragment Lifecycle, Recycler
 
 **Named Challenge Files:**
 
-**CriminalIntent-Challenge** Added another ViewHolder type to the RecyclerView with different layout file. Set to one in five items.
-**CriminalIntent-Challenge-2** Under completion
+Most Geoquiz Challenges are incorporated into the main file.
+
+
 
 
